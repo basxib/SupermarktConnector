@@ -6,8 +6,7 @@ logger = logging.getLogger('supermarkt_connector')
 logger.setLevel(logging.INFO)
 
 HEADERS = {
-    'User-Agent': 'android/6.29.3 Model/phone Android/7.0-API24',
-    'Host': 'ms.ah.nl',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36'
 }
 
 
@@ -18,6 +17,7 @@ class JumboConnector:
 
         response = requests.get(
             'https://mobileapi.jumbo.com/v9/search',
+            headers=HEADERS,
             params={"offset": page * size, "limit": size, "q": query},
         )
         if not response.ok:
